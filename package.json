@@ -1,0 +1,50 @@
+{
+  "name": "electron-vite-test",
+  "version": "1.0.0",
+  "description": "electron-vite-test",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:linux": "electron-builder --x64 --linux",
+    "build:win": "electron-builder --x64 --windows"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.2",
+    "vite-electron-plugin": "^0.8.2"
+  },
+  "dependencies": {
+    "open": "^9.1.0"
+  },
+  "build": {
+    "appId": "test",
+    "asarUnpack": "resources/**",
+    "directories": {
+      "buildResources": "resources",
+      "output": "releases"
+    },
+    "files": [
+      "dist",
+      "dist-electron"
+    ],
+    "linux": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "category": "Utilities",
+      "target": "AppImage"
+    },
+    "win": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": "msi"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
